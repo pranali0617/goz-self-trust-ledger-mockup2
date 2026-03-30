@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Libre Baskerville", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-goz-bg: #FDFCF9;
+  --color-goz-card: #FFFFFF;
+  --color-goz-sage: #5A6E5A;
+  --color-goz-clay: #D4A373;
+  --color-goz-text: #2A2A2A;
+  --color-goz-muted: #8C8C8C;
+  --color-goz-accent: #F4F1EA;
+}
+
+@layer base {
+  body {
+    @apply bg-goz-bg text-goz-text font-sans antialiased;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  .serif {
+    @apply font-serif;
+  }
+  
+  .goz-card {
+    @apply bg-goz-card rounded-[32px] border border-goz-sage/10 shadow-[0_8px_30px_rgba(0,0,0,0.04)];
+  }
+  
+  .goz-button {
+    @apply bg-goz-sage text-white rounded-full px-8 py-3 font-bold tracking-tight transition-all hover:opacity-90 active:scale-95 shadow-lg shadow-goz-sage/10;
+  }
+  
+  .goz-input {
+    @apply bg-goz-accent border border-goz-sage/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-goz-sage/40 transition-all text-goz-text placeholder:text-goz-muted;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .clay-gradient {
+    @apply bg-gradient-to-br from-goz-clay to-[#E5B88B];
+  }
+
+  .sage-text {
+    @apply text-goz-sage;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.9) translateY(20px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.animate-pop-in {
+  animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
